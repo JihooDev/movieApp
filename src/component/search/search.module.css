@@ -1,0 +1,93 @@
+:root {
+	--main-color: #4d42ff;
+}
+
+.back_img {
+	width: 100%;
+	position: relative;
+}
+
+.back_img > h1 {
+	position: absolute;
+	font-size: 5rem;
+	color: #fff;
+	width: 100%;
+	text-align: center;
+	bottom: 15rem;
+}
+
+.back_img > img {
+	width: 100%;
+	height: 50rem;
+	object-fit: cover;
+}
+
+.back_img > .search_bar {
+	position: absolute;
+	bottom: -2rem;
+	left: 30%;
+	width: 40%;
+	height: 6rem;
+	z-index: 999;
+	font-size: 2rem;
+	border: none;
+	outline: none;
+	background-color: #fff;
+	box-shadow: 0 5px 20px 0 rgb(147, 147, 147);
+	border-radius: 2rem;
+}
+
+form {
+	width: 100%;
+	height: inherit;
+	display: flex;
+	align-items: center;
+}
+
+form > input {
+	flex-grow: 1;
+	color: #000;
+	outline: none;
+	border: none;
+	background-color: transparent;
+	font-size: 2rem;
+	padding: 0 3rem;
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+form > button {
+	width: 5rem;
+	height: 5rem;
+	outline: none;
+	border: none;
+	background-color: transparent;
+}
+
+form > button > img {
+	width: 3rem;
+	height: 3rem;
+}
+
+.container {
+	margin-top: 3rem;
+}
+
+.data {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+}
+
+.container > h1 {
+	font-size: 3rem;
+	padding: 1rem 0;
+}
+
+.container > #null_text {
+	font-size: 2rem;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 10rem;
+}

@@ -1,0 +1,76 @@
+@font-face {
+	font-family: 'GmarketSansBold';
+	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+:root {
+	--main-color: #4d42ff;
+}
+
+header {
+	height: 10rem;
+	margin-bottom: 3.5rem;
+}
+
+.header_con {
+	width: 130rem;
+	height: 100%;
+	margin: 0 auto;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.left {
+	width: 23.3%;
+}
+
+.left > h1 {
+	font-size: 4.5rem;
+	font-family: 'GmarketSansBold';
+	color: var(--main-color);
+	cursor: pointer;
+}
+
+.menu {
+	display: flex;
+	width: 50%;
+	justify-content: space-around;
+}
+
+.menu > li {
+	font-size: 2rem;
+	cursor: pointer;
+}
+
+.search_bar {
+	display: flex;
+	justify-content: flex-end;
+	border-radius: 1rem;
+	padding: 1rem;
+	cursor: pointer;
+	width: 33%;
+}
+
+.search_bar > button {
+	outline: none;
+	border: none;
+	background: transparent;
+	cursor: pointer;
+	background-color: rgba(0, 0, 255, 0.616);
+	padding: 1rem;
+	border-radius: 1rem;
+}
+
+.search_bar > button > img {
+	width: 3rem;
+}
+
+.search_input:focus {
+	background-color: rgba(0, 0, 148, 0.35);
+	border-radius: 1rem;
+	padding: 1rem;
+	width: 100%;
+}
