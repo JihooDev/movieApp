@@ -5,7 +5,6 @@ export default function Card({ data, IMG_URL }) {
 	const { title, release_date, overview, poster_path, vote_average, name, first_air_date } = data;
 	return (
 		<div className={Styles.card}>
-			<h1>{data.length}</h1>
 			<div className={Styles.img}>
 				<img
 					src={IMG_URL + poster_path}

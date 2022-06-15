@@ -6,6 +6,7 @@ import Search from './component/search/search';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import BestTv from './component/best_tv/bestTv';
 import Contact from './component/contact/contact';
+import Home from './component/home/home';
 
 const API_KEY = 'api_key=6ecd252beb6f645e7eb78a9b40f1ddb3';
 const BASE_URL = 'https://api.themoviedb.org/3';
@@ -45,6 +46,7 @@ function Main() {
 			<div className="Main">
 				<Header />
 				<Routes>
+					<Route path="/" element={<Home />} />
 					<Route path="/best" element={<Best data={bestMovie} IMG_URL={IMG_URL} />} />
 					<Route path="/search" element={<Search IMG_URL={IMG_URL} BASE_URL={BASE_URL} API_KEY={API_KEY} />} />
 					<Route path="/best_tv" element={<BestTv />} />

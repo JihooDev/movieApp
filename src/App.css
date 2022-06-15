@@ -6,10 +6,6 @@
 	font-size: 62.5%;
 }
 
-:root {
-	--main-color-: #4D42FFl;
-}
-
 @font-face {
 	font-family: 'Pretendard-Regular';
 	src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
@@ -24,4 +20,45 @@
 .container {
 	width: 130rem;
 	margin: 0 auto;
+}
+
+/*  ** Button */
+
+.btn {
+	width: 17rem;
+	height: 7rem;
+	font-size: 2rem;
+	outline: none;
+	border: none;
+	border-radius: 1rem;
+	font-weight: bold;
+	font-family: 'Noto Sans KR', sans-serif;
+	cursor: pointer;
+	transition: all 0.5s ease;
+}
+
+.btn_success {
+	background-color: #4d42ff;
+	color: #fff;
+}
+.btn_success:hover {
+	background-color: #423ad9;
+}
+
+.btn_default {
+	background-color: #fff;
+	color: #000;
+	font-weight: normal;
+	border: 0.15rem solid #000;
+}
+.btn_default:hover {
+	background-color: rgb(237, 232, 232);
+}
+
+.btn_fail {
+	background-color: red;
+	color: #fff;
+}
+.btn_fail:hover {
+	background-color: rgb(199, 3, 3);
 }

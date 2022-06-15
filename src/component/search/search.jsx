@@ -6,6 +6,7 @@ export default function Search({ IMG_URL, BASE_URL, API_KEY }) {
 	const SEARCH = `${BASE_URL}/search/movie?${API_KEY}&language=ko-KR&sort_by=popularity.desc&query=`;
 	const [searchText, setSearchText] = useState('');
 	const [searchMovie, setSearchMovie] = useState([]);
+	const [loading, setLoading] = useState(false);
 
 	const handleClick = e => {
 		e.preventDefault();
@@ -13,7 +14,9 @@ export default function Search({ IMG_URL, BASE_URL, API_KEY }) {
 		fetch(SEARCH + searchText)
 			.then(res => res.json())
 			.then(data => {
-				setSearchMovie(data.results);
+				setTimeout(() => {
+					setSearchMovie(data.results);
+				}, 1500);
 			});
 
 		setSearchText('');
@@ -43,7 +46,7 @@ export default function Search({ IMG_URL, BASE_URL, API_KEY }) {
 					{searchMovie.map(searchs => {
 						return (
 							<>
-								<Card data={searchs} IMG_URL={IMG_URL} />
+								<Card key={searchs.id} data={searchs} IMG_URL={IMG_URL} />
 							</>
 						);
 					})}
