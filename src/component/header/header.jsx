@@ -18,6 +18,11 @@ export default function Header() {
 						<li onClick={() => navigate('recommended')}>추천 영화</li>
 						<li onClick={() => navigate('contact')}>프로젝트 소개</li>
 					</ul>
+					<div className={Styles.login_btn}>
+						<button>
+							<img src={process.env.PUBLIC_URL + 'image/user.svg'} />
+						</button>
+					</div>
 					<div className={Styles.search_bar}>
 						<button onClick={() => navigate('search')}>
 							<img src={process.env.PUBLIC_URL + 'image/search.svg'} alt="" />

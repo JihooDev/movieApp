@@ -7,8 +7,9 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import BestTv from './component/best_tv/bestTv';
 import Contact from './component/contact/contact';
 import Home from './component/home/home';
+import Login from './component/login/login';
 
-const API_KEY = 'api_key=6ecd252beb6f645e7eb78a9b40f1ddb3';
+const API_KEY = process.env.REACT_APP_FIREBASE_MOVIE_APIKEY;
 const BASE_URL = 'https://api.themoviedb.org/3';
 const API_URL = `${BASE_URL}/discover/movie?sort_by=popularity.desc&language=ko-KR&${API_KEY}&page=1`;
 const IMG_URL = `https://image.tmdb.org/t/p/w500`;
@@ -43,6 +44,7 @@ function Main() {
 
 	return (
 		<BrowserRouter>
+			{/* <Login /> */}
 			<div className="Main">
 				<Header />
 				<Routes>
