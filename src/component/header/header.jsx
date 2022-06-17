@@ -1,10 +1,16 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Search from '../search/search';
+import Button from '../module/button';
+import Search from '../pages/search/search';
 import Styles from './header.module.css';
 
-export default function Header() {
+export default function Header({ authService }) {
 	const navigate = useNavigate();
+	const onLogout = () => {
+		if (window.confirm('로그아웃 하시겠습니까?')) {
+			authService.logout();
+		}
+	};
 	return (
 		<>
 			<header>
@@ -14,20 +20,19 @@ export default function Header() {
 					</div>
 					<ul className={Styles.menu}>
 						<li onClick={() => navigate('best')}>인기 영화</li>
-						<li onClick={() => navigate('best_tv')}>인기 드라마</li>
+						<li onClick={() => navigate('best_tv')}>인기 TV 프로그램</li>
+						<li onClick={() => navigate('best_tv')}>개봉 예정</li>
 						<li onClick={() => navigate('recommended')}>추천 영화</li>
 						<li onClick={() => navigate('contact')}>프로젝트 소개</li>
 					</ul>
-					<div className={Styles.login_btn}>
-						<button>
-							<img src={process.env.PUBLIC_URL + 'image/user.svg'} />
-						</button>
-					</div>
+					<div className={Styles.login_btn}></div>
 					<div className={Styles.search_bar}>
 						<button onClick={() => navigate('search')}>
 							<img src={process.env.PUBLIC_URL + 'image/search.svg'} alt="" />
 						</button>
 					</div>
+					<button onClick={onLogout}>다크모드</button>
+					<button onClick={onLogout}>로그아웃</button>
 				</div>
 			</header>
 		</>

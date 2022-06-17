@@ -1,5 +1,5 @@
 import React from 'react';
-import Card from '../module/card';
+import Card from '../../module/card';
 import Styles from './best.module.css';
 
 export default function Best({ data, IMG_URL }) {

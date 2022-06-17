@@ -1,13 +1,15 @@
 import './App.css';
 import Header from './component/header/header';
 import { useEffect, useState } from 'react';
-import Best from './component/best/best';
-import Search from './component/search/search';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import BestTv from './component/best_tv/bestTv';
-import Contact from './component/contact/contact';
-import Home from './component/home/home';
-import Login from './component/login/login';
+import Search from './component/pages/search/search';
+import Best from './component/pages/best/best';
+import BestTv from './component/pages/best_tv/bestTv';
+import Contact from './component/pages/contact/contact';
+import Home from './component/pages/home/home';
+import Login from './component/member/login/login';
+import Join from './component/member/join/join';
+import Detail from './component/pages/detail/detail';
 
 const API_KEY = process.env.REACT_APP_FIREBASE_MOVIE_APIKEY;
 const BASE_URL = 'https://api.themoviedb.org/3';
@@ -18,8 +20,9 @@ const TVDATA = `${BASE_URL}/genre/tv/list?${API_KEY}&language=ko-KR`;
 const TODAYTV = `${BASE_URL}/movie/top_rated?${API_KEY}&language=ko-KR&page=1`;
 const TODAYTV2 = `${BASE_URL}/movie/top_rated?${API_KEY}&language=ko-KR&page=2`;
 
-function Main() {
+function Main({ authService }) {
 	const [bestMovie, setBestMovie] = useState([]);
+	const [loginModal, setLoginModal] = useState(false);
 
 	useEffect(() => {
 		const getMovie = url => {
@@ -28,7 +31,7 @@ function Main() {
 				.then(data => {
 					setBestMovie(data.results);
 				});
-		};
+		}; // ** best file 이동 ?
 		getMovie(API_URL);
 
 		const tvData = url => {
@@ -40,14 +43,16 @@ function Main() {
 		};
 
 		tvData(TODAYTV2);
+
+		console.log(loginModal);
 	}, []);
 
 	return (
 		<BrowserRouter>
-			{/* <Login /> */}
 			<div className="Main">
-				<Header />
+				<Header authService={authService} />
 				<Routes>
+					<Route path="/login" element={<Login authService={authService} />}></Route>
 					<Route path="/" element={<Home />} />
 					<Route path="/best" element={<Best data={bestMovie} IMG_URL={IMG_URL} />} />
 					<Route path="/search" element={<Search IMG_URL={IMG_URL} BASE_URL={BASE_URL} API_KEY={API_KEY} />} />

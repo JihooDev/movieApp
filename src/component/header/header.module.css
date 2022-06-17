@@ -7,11 +7,13 @@
 
 :root {
 	--main-color: #4d42ff;
+	--text-color: #fff;
+	--font: 'Noto Sans KR', sans-serif;
 }
 
 header {
-	height: 15rem;
-	margin-bottom: 3.5rem;
+	height: 10rem;
+	background-color: #fff;
 }
 
 .header_con {
@@ -37,8 +39,10 @@ header {
 }
 
 .menu > li {
-	font-size: 2rem;
+	font-size: 1.5rem;
 	cursor: pointer;
+	font-family: var(--font);
+	font-weight: bold;
 }
 
 .search_bar {

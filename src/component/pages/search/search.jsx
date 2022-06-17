@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Card from '../module/card';
+import Card from '../../module/card';
 import Styles from './search.module.css';
 
 export default function Search({ IMG_URL, BASE_URL, API_KEY }) {
@@ -18,8 +18,6 @@ export default function Search({ IMG_URL, BASE_URL, API_KEY }) {
 					setSearchMovie(data.results);
 				}, 1500);
 			});
-
-		setSearchText('');
 	};
 
 	const handleChange = e => {
