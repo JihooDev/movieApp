@@ -1,6 +1,6 @@
 import './App.css';
 import Header from './component/header/header';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Search from './component/pages/search/search';
 import Best from './component/pages/best/best';
@@ -19,10 +19,15 @@ const UPCOMMING = `${BASE_URL}/movie/upcoming?${API_KEY}&language=ko-KR`;
 const TVDATA = `${BASE_URL}/genre/tv/list?${API_KEY}&language=ko-KR`;
 const TODAYTV = `${BASE_URL}/movie/top_rated?${API_KEY}&language=ko-KR&page=1`;
 const TODAYTV2 = `${BASE_URL}/movie/top_rated?${API_KEY}&language=ko-KR&page=2`;
+const SEARCH = `${BASE_URL}/search/movie?${API_KEY}&language=ko-KR&sort_by=popularity.desc&query=`;
+
+export const DataStateContext = React.createContext();
 
 function Main({ authService }) {
 	const [bestMovie, setBestMovie] = useState([]);
+	const [searchMovie, setSearchMovie] = useState([]);
 	const [loginModal, setLoginModal] = useState(false);
+	const [searchText, setSearchText] = useState('');
 
 	useEffect(() => {
 		const getMovie = url => {
@@ -34,28 +39,39 @@ function Main({ authService }) {
 		}; // ** best file 이동 ?
 		getMovie(API_URL);
 
-		const tvData = url => {
-			fetch(url)
-				.then(res => res.json())
-				.then(data => {
-					console.log(data);
-				});
-		};
+		// const tvData = url => {
+		// 	fetch(url)
+		// 		.then(res => res.json())
+		// 		.then(data => {
+		// 			console.log(data);
+		// 		});
+		// };
 
-		tvData(TODAYTV2);
-
-		console.log(loginModal);
+		// tvData(TODAYTV2);
 	}, []);
+
+	const searchData = () => {
+		fetch(SEARCH + searchText)
+			.then(res => res.json())
+			.then(data => {
+				setSearchMovie(data.results);
+			});
+	};
+
+	const [darkMode, setDarkMode] = useState(true);
 
 	return (
 		<BrowserRouter>
-			<div className="Main">
-				<Header authService={authService} />
+			<div className={['Main', darkMode ? 'dark' : null].join(' ')}>
+				<Header authService={authService} dark={darkMode} setDark={setDarkMode} />
 				<Routes>
 					<Route path="/login" element={<Login authService={authService} />}></Route>
-					<Route path="/" element={<Home />} />
+					<Route path="/" element={<Home dark={darkMode} />} />
 					<Route path="/best" element={<Best data={bestMovie} IMG_URL={IMG_URL} />} />
-					<Route path="/search" element={<Search IMG_URL={IMG_URL} BASE_URL={BASE_URL} API_KEY={API_KEY} />} />
+					<Route
+						path="/search"
+						element={<Search IMG_URL={IMG_URL} data={searchMovie} onClick={searchData} searchText={searchText} setSearchText={setSearchText} />}
+					/>
 					<Route path="/best_tv" element={<BestTv />} />
 					<Route path="/contact" element={<Contact />} />
 				</Routes>

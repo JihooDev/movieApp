@@ -1,3 +1,7 @@
+:root {
+	color: #fff;
+}
+
 * {
 	margin: 0;
 	padding: 0;
@@ -15,6 +19,12 @@
 
 .Main {
 	font-family: 'Pretendard-Regular';
+	transition: all 0.3s ease-in-out;
+	height: 100%;
+}
+
+.dark {
+	background-color: #000;
 }
 
 .container {

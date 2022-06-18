@@ -2,12 +2,12 @@ import React from 'react';
 import Button from '../../module/button';
 import Styles from './home.module.css';
 
-export default function Home() {
+export default function Home({ dark }) {
 	return (
 		<div className={Styles.home}>
 			<div className={['container', `${Styles.container}`].join(' ')}>
 				<div className={Styles.left}>
-					<h1>
+					<h1 style={{ color: dark ? '#fff' : '#000' }}>
 						퇴근하고
 						<br />
 						영화 한편 어떠세요?
@@ -25,7 +25,7 @@ export default function Home() {
 					</div>
 				</div>
 				<div className={Styles.right}>
-					<img src={process.env.PUBLIC_URL + 'image/home.svg'} />
+					<img src={process.env.PUBLIC_URL + `image/home_${dark ? 'dark' : 'light'}.svg`} />
 				</div>
 			</div>
 		</div>

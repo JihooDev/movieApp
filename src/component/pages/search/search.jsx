@@ -1,23 +1,15 @@
 import React, { useState } from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Card from '../../module/card';
+import Detail from '../detail/detail';
 import Styles from './search.module.css';
 
-export default function Search({ IMG_URL, BASE_URL, API_KEY }) {
-	const SEARCH = `${BASE_URL}/search/movie?${API_KEY}&language=ko-KR&sort_by=popularity.desc&query=`;
-	const [searchText, setSearchText] = useState('');
-	const [searchMovie, setSearchMovie] = useState([]);
+export default function Search({ IMG_URL, data, searchText, setSearchText, onClick }) {
 	const [loading, setLoading] = useState(false);
 
 	const handleClick = e => {
 		e.preventDefault();
-
-		fetch(SEARCH + searchText)
-			.then(res => res.json())
-			.then(data => {
-				setTimeout(() => {
-					setSearchMovie(data.results);
-				}, 1500);
-			});
+		onClick();
 	};
 
 	const handleChange = e => {
@@ -33,7 +25,7 @@ export default function Search({ IMG_URL, BASE_URL, API_KEY }) {
 					<form action="">
 						<input type="text" className={Styles.input_box} value={searchText} onChange={handleChange} />
 						<button onClick={handleClick}>
-							<img src={process.env.PUBLIC_URL + 'image/search_black.svg'} alt="" />
+							<img src={process.env.PUBLIC_URL + 'image/search.svg'} alt="" />
 						</button>
 					</form>
 				</div>
@@ -41,7 +33,7 @@ export default function Search({ IMG_URL, BASE_URL, API_KEY }) {
 			<div className={['container', Styles.container].join(' ')}>
 				<h1></h1>
 				<div className={Styles.data}>
-					{searchMovie.map(searchs => {
+					{data.map(searchs => {
 						return (
 							<>
 								<Card key={searchs.id} data={searchs} IMG_URL={IMG_URL} />
@@ -49,7 +41,7 @@ export default function Search({ IMG_URL, BASE_URL, API_KEY }) {
 						);
 					})}
 				</div>
-				<h1 id={Styles.null_text}>{searchMovie.length > 0 ? null : '원하시는 데이터가 없습니다.'}</h1>
+				<h1 id={Styles.null_text}>{data.length > 0 ? null : '원하시는 데이터가 없습니다.'}</h1>
 			</div>
 		</div>
 	);

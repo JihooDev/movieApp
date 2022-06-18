@@ -5,16 +5,20 @@
 	top: 0%;
 	left: 0%;
 	z-index: 999;
-	background-color: rgba(0, 0, 0, 0.5);
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	color: #fff;
 }
 
 .container {
-	width: 80%;
-	height: 90%;
-	background-color: #fff;
+	width: 60%;
+	height: 70%;
 	border-radius: 1rem;
-	padding: 1rem;
+	background-color: #000;
+}
+
+.container img {
+	width: 50%;
+	height: 50%;
 }
