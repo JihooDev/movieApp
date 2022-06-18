@@ -6,32 +6,36 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	height: 100%;
 }
 
 .container {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	height: 100%;
 }
 
 .left {
 	width: 50%;
-	height: 50rem;
+	height: 70rem;
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
+	justify-content: center;
 }
 
 .left > h1 {
 	font-size: 7rem;
 	font-weight: bold;
 	font-family: 'Noto Sans KR', sans-serif;
+	margin-bottom: 5rem;
 }
 
 .left > p {
 	font-size: 2.5rem;
 	line-height: 4rem;
 	color: #757575;
+	margin-bottom: 5rem;
 }
 
 .left > p > span {
@@ -50,6 +54,6 @@
 	width: 50%;
 }
 .right > img {
-	width: 70rem;
-	height: 70rem;
+	width: 80rem;
+	height: 80rem;
 }

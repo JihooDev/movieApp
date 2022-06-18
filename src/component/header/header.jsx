@@ -25,20 +25,22 @@ export default function Header({ authService, dark, setDark }) {
 						<li onClick={() => navigate('recommended')}>추천 영화</li>
 						<li onClick={() => navigate('contact')}>프로젝트 소개</li>
 					</ul>
-					<div className={Styles.login_btn}></div>
 					<div className={Styles.search_bar}>
 						<button onClick={() => navigate('search')}>
 							<img src={process.env.PUBLIC_URL + 'image/search.svg'} alt="" />
 						</button>
 					</div>
 					<button
+						className={Styles.dark_btn}
 						onClick={() => {
 							setDark(!dark);
 						}}
 					>
-						다크모드
+						<img src={process.env.PUBLIC_URL + `image/${dark ? 'dark' : 'light'}.svg`} />
 					</button>
-					<button onClick={onLogout}>로그아웃</button>
+					<button onClick={onLogout} className={Styles.login_btn}>
+						<img src={process.env.PUBLIC_URL + 'image/user.svg'} alt="" />
+					</button>
 				</div>
 			</header>
 		</>

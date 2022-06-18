@@ -16,8 +16,8 @@ const BASE_URL = 'https://api.themoviedb.org/3';
 const API_URL = `${BASE_URL}/discover/movie?sort_by=popularity.desc&language=ko-KR&${API_KEY}&page=1`;
 const IMG_URL = `https://image.tmdb.org/t/p/w500`;
 const UPCOMMING = `${BASE_URL}/movie/upcoming?${API_KEY}&language=ko-KR`;
-const TVDATA = `${BASE_URL}/genre/tv/list?${API_KEY}&language=ko-KR`;
-const TODAYTV = `${BASE_URL}/movie/top_rated?${API_KEY}&language=ko-KR&page=1`;
+const CATEGORY = `${BASE_URL}/genre/tv/list?${API_KEY}&language=ko-KR&page=1`;
+const BEST_TV = `${BASE_URL}/tv/popular?${API_KEY}&language=ko-KR&page=1`;
 const TODAYTV2 = `${BASE_URL}/movie/top_rated?${API_KEY}&language=ko-KR&page=2`;
 const SEARCH = `${BASE_URL}/search/movie?${API_KEY}&language=ko-KR&sort_by=popularity.desc&query=`;
 
@@ -28,6 +28,7 @@ function Main({ authService }) {
 	const [searchMovie, setSearchMovie] = useState([]);
 	const [loginModal, setLoginModal] = useState(false);
 	const [searchText, setSearchText] = useState('');
+	const [bestTv, setBestTv] = useState([]);
 
 	useEffect(() => {
 		const getMovie = url => {
@@ -36,18 +37,18 @@ function Main({ authService }) {
 				.then(data => {
 					setBestMovie(data.results);
 				});
-		}; // ** best file 이동 ?
+		};
 		getMovie(API_URL);
 
-		// const tvData = url => {
-		// 	fetch(url)
-		// 		.then(res => res.json())
-		// 		.then(data => {
-		// 			console.log(data);
-		// 		});
-		// };
+		const tvData = url => {
+			fetch(url)
+				.then(res => res.json())
+				.then(data => {
+					setBestTv(data.results);
+				});
+		};
 
-		// tvData(TODAYTV2);
+		tvData(BEST_TV);
 	}, []);
 
 	const searchData = () => {
@@ -67,12 +68,12 @@ function Main({ authService }) {
 				<Routes>
 					<Route path="/login" element={<Login authService={authService} />}></Route>
 					<Route path="/" element={<Home dark={darkMode} />} />
-					<Route path="/best" element={<Best data={bestMovie} IMG_URL={IMG_URL} />} />
+					<Route path="/best" element={<Best data={bestMovie} IMG_URL={IMG_URL} dark={darkMode} />} />
 					<Route
 						path="/search"
 						element={<Search IMG_URL={IMG_URL} data={searchMovie} onClick={searchData} searchText={searchText} setSearchText={setSearchText} />}
 					/>
-					<Route path="/best_tv" element={<BestTv />} />
+					<Route path="/best_tv" element={<BestTv data={bestTv} dark={darkMode} IMG_URL={IMG_URL} />} />
 					<Route path="/contact" element={<Contact />} />
 				</Routes>
 			</div>

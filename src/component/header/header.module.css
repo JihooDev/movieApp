@@ -13,6 +13,8 @@
 
 header {
 	height: 10vh;
+	width: 100%;
+	z-index: 999;
 }
 
 .header_con {
@@ -48,7 +50,6 @@ header {
 	display: flex;
 	justify-content: flex-end;
 	border-radius: 1rem;
-	padding: 1rem;
 }
 
 .search_bar > button {
@@ -56,7 +57,7 @@ header {
 	border: none;
 	background: transparent;
 	cursor: pointer;
-	background-color: rgba(0, 0, 255, 0.616);
+	background-color: var(--main-color);
 	padding: 1rem;
 	border-radius: 1rem;
 }
@@ -65,23 +66,30 @@ header {
 	width: 3rem;
 }
 
-.search_input:focus {
-	background-color: rgba(0, 0, 148, 0.35);
-	border-radius: 1rem;
-	padding: 1rem;
-	width: 100%;
-}
-
-.login_btn > button {
+.dark_btn {
 	outline: none;
 	border: none;
 	background: transparent;
 	cursor: pointer;
-	background-color: rgba(0, 0, 255, 0.616);
+	background-color: var(--main-color);
 	padding: 1rem;
 	border-radius: 1rem;
 }
 
-.login_btn > button > img {
+.dark_btn img {
+	width: 3rem;
+}
+
+.login_btn {
+	outline: none;
+	border: none;
+	background: transparent;
+	cursor: pointer;
+	background-color: var(--main-color);
+	padding: 1rem;
+	border-radius: 1rem;
+}
+
+.login_btn > img {
 	width: 3rem;
 }
