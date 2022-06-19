@@ -1,0 +1,35 @@
+.data {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+.container > h1 {
+	font-size: 3rem;
+	padding: 1rem 0;
+}
+
+.list_box {
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+}
+
+.list_box li {
+	font-size: 1.6rem;
+	cursor: pointer;
+	padding: 1rem;
+	border-radius: 1rem;
+}
+
+.list_box li:after {
+	display: block;
+	content: '';
+	border-bottom: solid 2px #2ecc71;
+	transform: scaleX(0);
+	transition: transform 250ms ease-in-out;
+}
+
+.list_box li:hover:after {
+	transform: scaleX(1);
+}

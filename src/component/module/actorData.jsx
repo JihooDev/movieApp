@@ -4,8 +4,6 @@ import Styles from './component.module.css';
 export default function ActorData({ data, IMG_URL }) {
 	const { name, profile_path } = data;
 
-	console.log(data);
-
 	return (
 		<section className={Styles.actor}>
 			<div className={Styles.actor_box}>

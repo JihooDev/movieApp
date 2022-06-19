@@ -40,6 +40,7 @@
 }
 
 .container {
+	position: relative;
 	width: 60%;
 	height: 70%;
 	border-radius: 1rem;
@@ -95,4 +96,19 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+}
+
+.link {
+	position: absolute;
+	top: 5%;
+	right: 5%;
+}
+
+.actor {
+	font-size: 2rem;
+	padding: 3rem 5rem;
+}
+
+.link img {
+	width: 10rem;
 }

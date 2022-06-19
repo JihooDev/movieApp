@@ -20,9 +20,8 @@ export default function Header({ authService, dark, setDark }) {
 					</div>
 					<ul className={Styles.menu} style={{ color: dark ? '#fff' : '#000' }}>
 						<li onClick={() => navigate('best')}>인기 영화</li>
-						<li onClick={() => navigate('best_tv')}>인기 TV 프로그램</li>
-						<li onClick={() => navigate('best_tv')}>개봉 예정</li>
-						<li onClick={() => navigate('recommended')}>추천 영화</li>
+						<li onClick={() => navigate('comming')}>개봉 예정</li>
+						<li onClick={() => navigate('top_rated')}>추천 영화</li>
 						<li onClick={() => navigate('contact')}>프로젝트 소개</li>
 					</ul>
 					<div className={Styles.search_bar}>
