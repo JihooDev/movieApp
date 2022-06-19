@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Styles from './login.module.css';
 export default function Login({ authService, setLoginModal }) {
@@ -41,12 +41,12 @@ export default function Login({ authService, setLoginModal }) {
 				</h1>
 				<li>
 					<button onClick={onLogin} name="Google" className={Styles.btn}>
-						<img src={process.env.PUBLIC_URL + 'image/google.svg'} />
+						<img src={process.env.PUBLIC_URL + 'image/google.svg'} alt="구글 로그인" />
 					</button>
 				</li>
 				<li>
 					<button onClick={onLogin} name="Github" className={Styles.btn}>
-						<img src={process.env.PUBLIC_URL + 'image/github_logo.svg'} />
+						<img src={process.env.PUBLIC_URL + 'image/github_logo.svg'} alt="깃 허브 로그인" />
 					</button>
 				</li>
 			</ul>

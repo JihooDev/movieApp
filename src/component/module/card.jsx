@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import { Link, Route, Routes, useNavigate, useParams } from 'react-router-dom';
+import React, { useState } from 'react';
 import Detail from '../pages/detail/detail';
 import Styles from './component.module.css';
 
@@ -11,7 +10,7 @@ export default function Card({ data, IMG_URL, dark }) {
 
 	return (
 		<>
-			{openDetail == true ? <Detail close={setOpenDetail} data={data} IMG_URL={IMG_URL} /> : null}
+			{openDetail === true ? <Detail close={setOpenDetail} data={data} IMG_URL={IMG_URL} /> : null}
 			<div
 				className={Styles.card}
 				onClick={() => {
@@ -25,6 +24,7 @@ export default function Card({ data, IMG_URL, dark }) {
 						onError={e => {
 							e.target.src = 'https://images.pexels.com/photos/5662857/pexels-photo-5662857.png';
 						}}
+						alt="포스터 이미지"
 					/>
 				</div>
 				<div className={Styles.over_view}>

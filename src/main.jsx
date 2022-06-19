@@ -15,19 +15,15 @@ const BASE_URL = 'https://api.themoviedb.org/3';
 const API_URL = `${BASE_URL}/discover/movie?sort_by=popularity.desc&language=ko-KR&${API_KEY}&page=1`;
 const IMG_URL = `https://image.tmdb.org/t/p/w500`;
 const UPCOMMING = `${BASE_URL}/movie/upcoming?${API_KEY}&language=ko-KR&page=*`;
-const CATEGORY = `${BASE_URL}/genre/tv/list?${API_KEY}&language=ko-KR&page=1`;
 const TOP_RATED = `${BASE_URL}/movie/top_rated?${API_KEY}&language=ko-KR&page=1`;
 const SEARCH = `${BASE_URL}/search/movie?${API_KEY}&language=ko-KR&sort_by=popularity.desc&query=`;
-const GENRE = `${BASE_URL}/genre/movie/list?${API_KEY}&language=ko-KR`;
-export const DataStateContext = React.createContext();
 
 function Main({ authService }) {
 	const [bestMovie, setBestMovie] = useState([]);
 	const [searchMovie, setSearchMovie] = useState([]);
-	const [loginModal, setLoginModal] = useState(false);
 	const [searchText, setSearchText] = useState('');
-	const [commingData, setCommingData] = useState();
-	const [topData, setTopData] = useState();
+	const [commingData, setCommingData] = useState([]);
+	const [topData, setTopData] = useState([]);
 
 	useEffect(() => {
 		const getMovie = url => {
