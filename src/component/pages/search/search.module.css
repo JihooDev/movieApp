@@ -75,21 +75,12 @@ form > button > img {
 .data {
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
+	padding: 10rem 0;
 }
 
 .container > h1 {
 	font-size: 3rem;
 	padding: 1rem 0;
-}
-
-.container > #null_text {
-	font-size: 2rem;
-	text-align: center;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	width: 100%;
-	height: 10rem;
 }
 
 .loading_box {
@@ -105,6 +96,15 @@ form > button > img {
 	border: 5px solid grey;
 	border-top: 5px solid var(--main-color);
 	animation: spin 1.5s linear infinite;
+}
+
+.result_text {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	font-size: 5rem;
+	height: 40rem;
 }
 
 @keyframes spin {

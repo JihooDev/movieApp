@@ -20,7 +20,7 @@ export default function Header({ authService, dark, setDark }) {
 						<li onClick={() => navigate('best')}>인기 영화</li>
 						<li onClick={() => navigate('comming')}>신작</li>
 						<li onClick={() => navigate('top_rated')}>추천 영화</li>
-						<li onClick={() => navigate('contact')}>프로젝트 소개</li>
+						<li onClick={() => navigate('project')}>프로젝트 소개</li>
 					</ul>
 					<div className={Styles.search_bar}>
 						<button onClick={() => navigate('search')}>

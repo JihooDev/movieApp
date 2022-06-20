@@ -4,11 +4,11 @@ import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Search from './component/pages/search/search';
 import Best from './component/pages/best/best';
-import Contact from './component/pages/contact/contact';
 import Home from './component/pages/home/home';
 import Login from './component/member/login/login';
 import Comming from './component/pages/comming/comming';
 import TopRated from './component/pages/topRated/topRated';
+import Project from './component/pages/project/project';
 
 const API_KEY = process.env.REACT_APP_FIREBASE_MOVIE_APIKEY;
 const BASE_URL = 'https://api.themoviedb.org/3';
@@ -78,9 +78,18 @@ function Main({ authService }) {
 					<Route path="/top_rated" element={<TopRated data={topData} IMG_URL={IMG_URL} dark={darkMode} />} />
 					<Route
 						path="/search"
-						element={<Search IMG_URL={IMG_URL} data={searchMovie} onClick={searchData} searchText={searchText} setSearchText={setSearchText} />}
+						element={
+							<Search
+								IMG_URL={IMG_URL}
+								dark={darkMode}
+								data={searchMovie}
+								onClick={searchData}
+								searchText={searchText}
+								setSearchText={setSearchText}
+							/>
+						}
 					/>
-					<Route path="/contact" element={<Contact />} />
+					<Route path="/project" element={<Project dark={darkMode} />} />
 				</Routes>
 			</div>
 		</BrowserRouter>

@@ -1,0 +1,117 @@
+:root {
+	color: #fff;
+	text-decoration: none;
+}
+
+.project {
+	padding-top: 6rem;
+	font-size: 3rem;
+}
+
+.project_about {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.main {
+	font-size: 3.5rem;
+	font-weight: bold;
+	line-height: 5rem;
+}
+
+.logo {
+	font-size: 10rem;
+	font-family: 'GmarketSansBold';
+	color: #4d42ff;
+	background-color: #fff;
+	border-radius: 5rem;
+	padding: 5rem;
+}
+
+.my_name {
+	font-size: 4rem;
+}
+
+.lang {
+	margin-top: 10rem;
+}
+
+.lang_box1 {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.lang_box2 {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.lang_box2 > p {
+	margin: 0 8rem;
+	font-size: 3rem;
+	border: 3px solid #5f27cd;
+	border-radius: 3rem;
+	padding: 2rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.lang_box1 > p {
+	margin: 0 2rem;
+	font-size: 3rem;
+	border: 3px solid #5f27cd;
+	border-radius: 3rem;
+	padding: 2rem;
+}
+
+.lang .lang_box1,
+.lang_box2 > p {
+	font-size: 3rem;
+	margin-top: 5rem;
+}
+
+.logo_img {
+	width: 15rem;
+	margin-right: 2rem;
+	margin-top: 2rem;
+}
+
+.link_box {
+	margin-top: 15rem;
+	padding-bottom: 3rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.link_box > p {
+	font-size: 5rem;
+	margin-bottom: 5rem;
+}
+
+.url {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+.url_text {
+	font-size: 2rem;
+	text-decoration: none;
+	margin-right: 10rem;
+}
+
+.github_logo {
+	padding: 2rem;
+	background-color: #fff;
+	border-radius: 50%;
+}
+
+.github_logo > img {
+	width: 3rem;
+}

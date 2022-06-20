@@ -11,33 +11,36 @@ export default function Detail({ close, data, IMG_URL }) {
 	const [actor, setActor] = useState();
 	const [videoData, setVideoData] = useState();
 	const LINK = `https://www.youtube.com/embed/${videoData === undefined ? 'u_nc-t4oHfw' : videoData.key}`;
-	useEffect(() => {
-		const tvData = url => {
-			fetch(url)
-				.then(res => res.json())
-				.then(credit => {
-					setActor(credit.cast);
-				});
-		};
-		tvData(CREDIT);
+	const [loading, setLoading] = useState(false);
 
-		const videos = url => {
-			fetch(url)
-				.then(res => res.json())
-				.then(video => {
-					setVideoData(video.results[0]);
-				});
-		};
-		videos(VIDEO);
-	});
+	useEffect(() => {
+		setLoading(true);
+	}, []);
+	const videos = url => {
+		fetch(url)
+			.then(res => res.json())
+			.then(video => {
+				setVideoData(video.results[0]);
+			});
+	};
+	videos(VIDEO);
+	const tvData = url => {
+		fetch(url)
+			.then(res => res.json())
+			.then(credit => {
+				setActor(credit.cast);
+			});
+	};
+	tvData(CREDIT);
 
 	return (
 		<motion.div
 			className={Styles.detail}
-			initial={{ scale: 0 }}
-			animate={{ scale: 1, width: '100%', transition: { duration: 0.4 } }}
+			initial={{ opacity: 0 }}
+			animate={{ opacity: 1, transition: { duration: 0.4 } }}
 			style={{ backgroundImage: `url(${process.env.PUBLIC_URL}image/modal_back.jpg)` }}
 		>
+			{loading === true ? '로딩중' : '로딩완료'}
 			<button
 				className={Styles.close_btn}
 				onClick={() => {

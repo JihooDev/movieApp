@@ -1,11 +1,15 @@
 import React from 'react';
+import { useRef } from 'react';
 import Card from '../../module/card';
 import Styles from './search.module.css';
 
-export default function Search({ IMG_URL, data, searchText, setSearchText, onClick }) {
+export default function Search({ IMG_URL, data, searchText, setSearchText, onClick, dark }) {
+	const searchRef = useRef('');
 	const handleClick = e => {
 		e.preventDefault();
-		onClick();
+		if (searchRef.current.value.length > 0) {
+			onClick();
+		}
 	};
 
 	const handleChange = e => {
@@ -13,13 +17,13 @@ export default function Search({ IMG_URL, data, searchText, setSearchText, onCli
 	};
 
 	return (
-		<div className={Styles.Search}>
+		<div className={Styles.search}>
 			<div className={Styles.back_img}>
 				<h1>원하시는 영화를 검색 해보세요!</h1>
 				<img src={process.env.PUBLIC_URL + 'image/main.jpg'} id={Styles.back_img} alt="검색페이지" />
 				<div className={Styles.search_bar}>
 					<form action="">
-						<input type="text" className={Styles.input_box} value={searchText} onChange={handleChange} />
+						<input type="text" className={Styles.input_box} value={searchText} onChange={handleChange} ref={searchRef} />
 						<button onClick={handleClick}>
 							<img src={process.env.PUBLIC_URL + 'image/search.svg'} alt="" />
 						</button>
@@ -36,7 +40,9 @@ export default function Search({ IMG_URL, data, searchText, setSearchText, onCli
 						);
 					})}
 				</div>
-				<h1 id={Styles.null_text}>{data.length > 0 ? null : '원하시는 데이터가 없습니다.'}</h1>
+				<h1 className={data.length == 0 ? Styles.result_text : null} style={{ color: `${dark ? '#fff' : '#000'}` }}>
+					{data.length > 0 ? null : '원하시는 데이터가 없습니다.'}
+				</h1>
 			</div>
 		</div>
 	);

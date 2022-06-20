@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Detail from '../pages/detail/detail';
+import { motion } from 'framer-motion';
 import Styles from './component.module.css';
 
 export default function Card({ data, IMG_URL, dark }) {
@@ -11,11 +12,13 @@ export default function Card({ data, IMG_URL, dark }) {
 	return (
 		<>
 			{openDetail === true ? <Detail close={setOpenDetail} data={data} IMG_URL={IMG_URL} /> : null}
-			<div
+			<motion.div
 				className={Styles.card}
 				onClick={() => {
 					setOpenDetail(true);
 				}}
+				initial={{ opacity: 0, transform: 'translateY(10%)' }}
+				animate={{ opacity: 1, transition: { duration: 0.1 }, transform: 'translateY(0%)' }}
 				style={{ backgroundColor: `${dark ? '#c8d6e5' : 'rgba(0, 0, 0, 0.5)'}` }}
 			>
 				<div className={Styles.img}>
@@ -38,7 +41,7 @@ export default function Card({ data, IMG_URL, dark }) {
 					<h1 style={{ color: `${dark ? '#000' : '#fff'}` }}>{title ? title : name}</h1>
 					<p>{vote_average}</p>
 				</div>
-			</div>
+			</motion.div>
 		</>
 	);
 }

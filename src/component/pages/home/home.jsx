@@ -1,6 +1,6 @@
 import React from 'react';
 import Button from '../../module/button';
-import Contact from '../contact/contact';
+import Contact from '../project/project';
 import Styles from './home.module.css';
 
 export default function Home({ dark }) {
@@ -31,7 +31,6 @@ export default function Home({ dark }) {
 					</div>
 				</div>
 			</div>
-			<Contact />
 		</>
 	);
 }
