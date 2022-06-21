@@ -2,13 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import Main from './main';
-import AuthService from './service/auth_service';
+import Api from './service/api';
+import firebase from './service/firebase';
+console.log(firebase);
 
-const authService = new AuthService();
+const movie = new Api(process.env.REACT_APP_FIREBASE_MOVIE_APIKEY);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 	<React.StrictMode>
-		<Main authService={authService} />
+		<Main movie={movie} />
 	</React.StrictMode>
 );

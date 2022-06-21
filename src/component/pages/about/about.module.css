@@ -1,0 +1,59 @@
+.about {
+	color: #fff;
+	background-color: #000;
+}
+
+.page {
+	width: 100vw;
+	height: 60vh;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	overflow: hidden;
+}
+
+.pageOne {
+	background-color: #5f27cd;
+}
+
+.pageTwo {
+	background-color: #3d3d3d;
+}
+
+.pageThree {
+	background-color: #ff4d4d;
+}
+
+.pageFour {
+	background-color: #192a56;
+}
+
+.pageFive {
+	background-color: #c23616;
+}
+
+.page > .image {
+	width: 50%;
+}
+
+.page > .image > img {
+	width: 100%;
+}
+
+.text {
+	width: 50%;
+	height: 50%;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: flex-start;
+}
+
+.text > h1 {
+	font-size: 7rem;
+	margin-bottom: 3rem;
+}
+
+.text > p {
+	font-size: 2.5rem;
+}

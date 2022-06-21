@@ -1,5 +1,6 @@
 import React from 'react';
 import Button from '../../module/button';
+import About from '../about/about';
 import Contact from '../project/project';
 import Styles from './home.module.css';
 
@@ -31,6 +32,7 @@ export default function Home({ dark }) {
 					</div>
 				</div>
 			</div>
+			<About />
 		</>
 	);
 }

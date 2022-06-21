@@ -6,16 +6,12 @@ import { motion } from 'framer-motion';
 export default function Detail({ close, data, IMG_URL }) {
 	const { title, id, release_date, backdrop_path, overview, vote_average, name } = data;
 
-	const CREDIT = `https://api.themoviedb.org/3/movie/${id}/credits?api_key=6ecd252beb6f645e7eb78a9b40f1ddb3&language=ko-KR`;
-	const VIDEO = `https://api.themoviedb.org/3/movie/${id}/videos?api_key=6ecd252beb6f645e7eb78a9b40f1ddb3&language=ko-KR`;
+	const CREDIT = `https://api.themoviedb.org/3/movie/${id}/credits?${process.env.REACT_APP_FIREBASE_MOVIE_APIKEY}`;
+	const VIDEO = `https://api.themoviedb.org/3/movie/${id}/videos?${process.env.REACT_APP_FIREBASE_MOVIE_APIKEY}&language=ko-KR`;
 	const [actor, setActor] = useState();
 	const [videoData, setVideoData] = useState();
 	const LINK = `https://www.youtube.com/embed/${videoData === undefined ? 'u_nc-t4oHfw' : videoData.key}`;
-	const [loading, setLoading] = useState(false);
 
-	useEffect(() => {
-		setLoading(true);
-	}, []);
 	const videos = url => {
 		fetch(url)
 			.then(res => res.json())
@@ -40,7 +36,6 @@ export default function Detail({ close, data, IMG_URL }) {
 			animate={{ opacity: 1, transition: { duration: 0.4 } }}
 			style={{ backgroundImage: `url(${process.env.PUBLIC_URL}image/modal_back.jpg)` }}
 		>
-			{loading === true ? '로딩중' : '로딩완료'}
 			<button
 				className={Styles.close_btn}
 				onClick={() => {
