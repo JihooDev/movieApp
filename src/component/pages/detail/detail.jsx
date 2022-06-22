@@ -3,7 +3,7 @@ import ActorData from '../../module/actorData';
 import Styles from './detail.module.css';
 import { motion } from 'framer-motion';
 
-export default function Detail({ close, data, IMG_URL }) {
+export default function Detail({ close, data, IMG_URL, onClick, check }) {
 	const { title, id, release_date, backdrop_path, overview, vote_average, name } = data;
 
 	const CREDIT = `https://api.themoviedb.org/3/movie/${id}/credits?${process.env.REACT_APP_FIREBASE_MOVIE_APIKEY}`;
@@ -47,7 +47,15 @@ export default function Detail({ close, data, IMG_URL }) {
 			<div className={Styles.container}>
 				<div className={Styles.view_top}>
 					<div className={Styles.view}>
-						<h1>{title ? title : name}</h1>
+						<div className={Styles.title}>
+							<h1>{title ? title : name}</h1>
+							<img
+								src={process.env.PUBLIC_URL + `image/${check ? 'check' : 'bookmark'}.svg`}
+								alt="담기"
+								onClick={onClick}
+								className={Styles.check}
+							/>
+						</div>
 						<a href={LINK} target="_blank" rel="noreferrer" className={Styles.link}>
 							<img src={process.env.PUBLIC_URL + 'image/youtube.png'} alt="예고편" />
 						</a>

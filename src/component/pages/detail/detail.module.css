@@ -59,9 +59,19 @@
 	padding: 0.3rem;
 }
 
-.view h1 {
-	font-size: 2rem;
-	margin-bottom: 2rem;
+.title {
+	display: flex;
+	align-items: center;
+}
+
+.title > img {
+	width: 4rem;
+	margin-left: 3rem;
+	cursor: pointer;
+}
+
+.title h1 {
+	font-size: 4rem;
 	font-family: var(--font-style);
 }
 

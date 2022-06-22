@@ -9,11 +9,12 @@ import Login from './component/member/login/login';
 import Comming from './component/pages/comming/comming';
 import TopRated from './component/pages/topRated/topRated';
 import Project from './component/pages/project/project';
-import Button from './component/module/button';
-import { authService } from './service/fBase';
+import { authService, dbService } from './service/fBase';
 import Join from './component/member/join/join';
+import { get } from 'firebase/database';
 
 function Main({ movie }) {
+	// ** API 데이터 관련
 	const [bestMovie, setBestMovie] = useState([]);
 	const [searchMovie, setSearchMovie] = useState([]);
 	const [searchText, setSearchText] = useState('');
@@ -22,12 +23,28 @@ function Main({ movie }) {
 	const [darkMode, setDarkMode] = useState(false);
 	const IMG_URL = `https://image.tmdb.org/t/p/w500`;
 
+	// ** 로그인 관련
 	const [init, setInit] = useState(false);
 	const [isLogin, setIsLogin] = useState(false);
 
 	const search = () => {
 		movie.searchData(searchText).then(data => setSearchMovie(data));
 	};
+
+	// ** firebase 데이터 관련
+	const [checkItem, setCheckItem] = useState([]);
+
+	const getCheck = async () => {
+		const newCheck = await dbService.collection('movie').get();
+		newCheck.forEach(document => {
+			const checkItemObj = {
+				...document.data(),
+				id: document.id,
+			};
+			setCheckItem(prev => [checkItemObj, ...prev]);
+		});
+	};
+	console.log(checkItem);
 
 	useEffect(() => {
 		authService.onAuthStateChanged(user => {
@@ -45,6 +62,7 @@ function Main({ movie }) {
 		movie.comming().then(data => setCommingData(data));
 
 		movie.topRated().then(data => setTopData(data));
+		getCheck();
 	}, []);
 
 	return (
@@ -54,7 +72,10 @@ function Main({ movie }) {
 				<Routes>
 					<Route path="/" element={<Home dark={darkMode} />} />
 					<Route path="/login" element={<Login />} />
-					<Route path="/best" element={<Best data={bestMovie} IMG_URL={IMG_URL} dark={darkMode} />} />
+					<Route
+						path="/best"
+						element={<Best data={bestMovie} IMG_URL={IMG_URL} dark={darkMode} checkItem={checkItem} setCheckItem={setCheckItem} />}
+					/>
 					<Route path="/comming" element={<Comming data={commingData} IMG_URL={IMG_URL} dark={darkMode} />} />
 					<Route path="/top_rated" element={<TopRated data={topData} IMG_URL={IMG_URL} dark={darkMode} />} />
 					<Route

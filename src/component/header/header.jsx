@@ -8,10 +8,6 @@ import Styles from './header.module.css';
 export default function Header({ init, dark, setDark }) {
 	const navigate = useNavigate();
 
-	useEffect(() => {
-		console.log(init);
-	});
-
 	const onLogout = () => {
 		authService.signOut();
 		navigate('/');
