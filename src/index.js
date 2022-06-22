@@ -3,8 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import Main from './main';
 import Api from './service/api';
-import firebase from './service/firebase';
-console.log(firebase);
+import firebase from './service/fBase';
 
 const movie = new Api(process.env.REACT_APP_FIREBASE_MOVIE_APIKEY);
 

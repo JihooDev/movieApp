@@ -1,14 +1,23 @@
 import React from 'react';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { authService } from '../../service/fBase';
+import Button from '../module/button';
 import Styles from './header.module.css';
 
-export default function Header({ authService, dark, setDark }) {
+export default function Header({ init, dark, setDark }) {
 	const navigate = useNavigate();
+
+	useEffect(() => {
+		console.log(init);
+	});
+
 	const onLogout = () => {
-		if (window.confirm('로그아웃 하시겠습니까?')) {
-			authService.logout();
-		}
+		authService.signOut();
+		navigate('home');
+		window.location.reload();
 	};
+
 	return (
 		<>
 			<header>
@@ -35,9 +44,13 @@ export default function Header({ authService, dark, setDark }) {
 					>
 						<img src={process.env.PUBLIC_URL + `image/${dark ? 'dark' : 'light'}.svg`} alt="다크모드" />
 					</button>
-					<button onClick={onLogout} className={Styles.login_btn}>
-						<img src={process.env.PUBLIC_URL + 'image/user.svg'} alt="로그인" />
-					</button>
+					{!init ? (
+						<button onClick={() => navigate('login')} className={Styles.login_btn}>
+							<img src={process.env.PUBLIC_URL + 'image/user.svg'} alt="로그인" />
+						</button>
+					) : (
+						<Button text={'로그아웃'} onClick={onLogout} />
+					)}
 				</div>
 			</header>
 		</>

@@ -9,6 +9,9 @@ import Login from './component/member/login/login';
 import Comming from './component/pages/comming/comming';
 import TopRated from './component/pages/topRated/topRated';
 import Project from './component/pages/project/project';
+import Button from './component/module/button';
+import { authService } from './service/fBase';
+import Join from './component/member/join/join';
 
 function Main({ movie }) {
 	const [bestMovie, setBestMovie] = useState([]);
@@ -19,11 +22,23 @@ function Main({ movie }) {
 	const [darkMode, setDarkMode] = useState(false);
 	const IMG_URL = `https://image.tmdb.org/t/p/w500`;
 
+	const [init, setInit] = useState(false);
+	const [isLogin, setIsLogin] = useState(false);
+
 	const search = () => {
 		movie.searchData(searchText).then(data => setSearchMovie(data));
 	};
 
 	useEffect(() => {
+		authService.onAuthStateChanged(user => {
+			if (user) {
+				setIsLogin(true);
+				setInit(true);
+			} else {
+				setIsLogin(false);
+			}
+		});
+
 		movie.bestData().then(data => setBestMovie(data));
 
 		movie.comming().then(data => setCommingData(data));
@@ -34,10 +49,10 @@ function Main({ movie }) {
 	return (
 		<BrowserRouter>
 			<div className={['Main', darkMode ? 'dark' : null].join(' ')}>
-				<Header dark={darkMode} setDark={setDarkMode} />
+				<Header dark={darkMode} setDark={setDarkMode} isLogin={isLogin} init={init} />
 				<Routes>
-					<Route path="/login" element={<Login />}></Route>
 					<Route path="/" element={<Home dark={darkMode} />} />
+					<Route path="/login" element={<Login />} />
 					<Route path="/best" element={<Best data={bestMovie} IMG_URL={IMG_URL} dark={darkMode} />} />
 					<Route path="/comming" element={<Comming data={commingData} IMG_URL={IMG_URL} dark={darkMode} />} />
 					<Route path="/top_rated" element={<TopRated data={topData} IMG_URL={IMG_URL} dark={darkMode} />} />
@@ -55,6 +70,7 @@ function Main({ movie }) {
 						}
 					/>
 					<Route path="/project" element={<Project dark={darkMode} />} />
+					<Route path="/join" element={<Join />} />
 				</Routes>
 			</div>
 		</BrowserRouter>

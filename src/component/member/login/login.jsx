@@ -1,55 +1,92 @@
-import React, { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React from 'react';
+import { useState } from 'react';
+import Button from '../../module/button';
 import Styles from './login.module.css';
-export default function Login({ authService, setLoginModal }) {
-	const navigate = useNavigate();
-	const welcome = userId => {
-		navigate('/best', {
-			state: {
-				id: userId,
-			},
-		});
-	};
+import { authService, firebaseInstance } from '../../../service/fBase';
+import { useNavigate } from 'react-router-dom';
+import { useRef } from 'react';
+export default function Login() {
+	const [email, setEmail] = useState('');
 
-	const onLogin = e => {
-		authService.login(e.currentTarget.name).then(data => welcome(data.user.uid));
-	};
+	const navigation = useNavigate();
 
-	useEffect(() => {
-		authService.onAuthChange(user => {
-			user && welcome(user.id);
-		});
+	const [password, setPassword] = useState('');
 
-		authService.onAuthChange(user => {
-			if (!user) {
-				navigate('/login');
-			} else {
-				navigate('/');
+	const [error, setError] = useState(false);
+
+	const onSocialClick = async event => {
+		const {
+			target: { name },
+		} = event;
+
+		let provider;
+
+		try {
+			if (name === 'Google') {
+				provider = new firebaseInstance.auth.GoogleAuthProvider();
+			} else if (name === 'Github') {
+				provider = new firebaseInstance.auth.GithubAuthProvider();
 			}
-		});
-	});
+
+			setTimeout(() => {
+				navigation('/');
+			}, 3000);
+		} catch (error) {
+			setError('소셜 링크 로그인에 오류가 있습니다.');
+		}
+
+		await authService.signInWithPopup(provider);
+	};
+
+	const onChange = event => {
+		const {
+			target: { name, value },
+		} = event;
+		if (name === 'email') {
+			setEmail(value);
+		} else if (name === 'password') {
+			setPassword(value);
+		}
+	};
+
+	const onSubmit = async event => {
+		event.preventDefault();
+		try {
+			await authService.signInWithEmailAndPassword(email, password);
+			navigation('home');
+		} catch (error) {
+			setError('로그인 정보가 일치하지 않습니다.');
+		}
+	};
 	return (
 		<div className={Styles.login}>
-			<ul className={Styles.login_box}>
-				<p>소셜 로그인</p>
-				<h1
-					onClick={() => {
-						setLoginModal(false);
-					}}
-				>
-					닫기
-				</h1>
-				<li>
-					<button onClick={onLogin} name="Google" className={Styles.btn}>
-						<img src={process.env.PUBLIC_URL + 'image/google.svg'} alt="구글 로그인" />
-					</button>
-				</li>
-				<li>
-					<button onClick={onLogin} name="Github" className={Styles.btn}>
-						<img src={process.env.PUBLIC_URL + 'image/github_logo.svg'} alt="깃 허브 로그인" />
-					</button>
-				</li>
-			</ul>
+			<form onSubmit={onSubmit}>
+				<h1>로그인</h1>
+				<div className={Styles.input_box}>
+					<input type="text" className={Styles.input} name="email" placeholder="E-mail" required value={email} onChange={onChange} />
+					<input type="password" className={Styles.input} name="password" placeholder="Password" required value={password} onChange={onChange} />
+					<h3 style={{ color: 'red' }}>{error}</h3>
+				</div>
+				<span onClick={() => navigation('/join')}>회원이 아니신가요?</span>
+				<div className={Styles.submit}>
+					<img
+						src={process.env.PUBLIC_URL + 'image/google.svg'}
+						className={Styles.social}
+						name="Google"
+						alt="구글 로그인"
+						onClick={onSocialClick}
+					/>
+
+					<img
+						src={process.env.PUBLIC_URL + 'image/github_logo.svg'}
+						className={Styles.social}
+						name="Github"
+						alt="깃 허브 로그인"
+						onClick={onSocialClick}
+					/>
+					<Button text={'로그인'} type={'success'} />
+				</div>
+			</form>
 		</div>
 	);
 }

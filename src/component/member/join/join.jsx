@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
+import { authService } from '../../../service/fBase';
 import Button from '../../module/button';
 import Styles from './join.module.css';
 
-export default function Join({ authService }) {
+export default function Join() {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
-	const onChange = e => {
+	const onChange = event => {
 		const {
 			target: { name, value },
-		} = e;
+		} = event;
 
 		if (name === 'email') {
 			setEmail(value);
@@ -20,12 +21,7 @@ export default function Join({ authService }) {
 	const onSubmit = async e => {
 		e.preventDefault();
 
-		try {
-			const data = await authService.signInWithEmailAndPassword(email, password);
-			console.log(data);
-		} catch (error) {
-			console.log(error);
-		}
+		await authService.createUserWithEmailAndPassword(email, password);
 	};
 
 	return (
