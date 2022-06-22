@@ -36,6 +36,7 @@ function Main({ movie }) {
 				setInit(true);
 			} else {
 				setIsLogin(false);
+				setInit(false);
 			}
 		});
 
@@ -70,7 +71,7 @@ function Main({ movie }) {
 						}
 					/>
 					<Route path="/project" element={<Project dark={darkMode} />} />
-					<Route path="/join" element={<Join />} />
+					<Route path="/join" element={<Join setIsLogin={setIsLogin} />} />
 				</Routes>
 			</div>
 		</BrowserRouter>

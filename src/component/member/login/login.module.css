@@ -51,6 +51,7 @@ form > .input_box {
 	padding: 1rem;
 	font-size: 1.3rem;
 	border: 1px solid #eee;
+	border-radius: 1rem;
 }
 
 .social {

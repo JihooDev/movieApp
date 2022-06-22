@@ -27,10 +27,6 @@ export default function Login() {
 			} else if (name === 'Github') {
 				provider = new firebaseInstance.auth.GithubAuthProvider();
 			}
-
-			setTimeout(() => {
-				navigation('/');
-			}, 3000);
 		} catch (error) {
 			setError('소셜 링크 로그인에 오류가 있습니다.');
 		}
@@ -53,7 +49,7 @@ export default function Login() {
 		event.preventDefault();
 		try {
 			await authService.signInWithEmailAndPassword(email, password);
-			navigation('home');
+			navigation('/');
 		} catch (error) {
 			setError('로그인 정보가 일치하지 않습니다.');
 		}

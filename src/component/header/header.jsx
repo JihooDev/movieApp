@@ -14,7 +14,7 @@ export default function Header({ init, dark, setDark }) {
 
 	const onLogout = () => {
 		authService.signOut();
-		navigate('home');
+		navigate('/');
 		window.location.reload();
 	};
 
