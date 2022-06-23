@@ -22,7 +22,6 @@ export default function Search({ IMG_URL, data, searchText, setSearchText, onCli
 
 	const handleChange = e => {
 		setSearchText(e.target.value);
-		console.log(searchText);
 	};
 
 	return (

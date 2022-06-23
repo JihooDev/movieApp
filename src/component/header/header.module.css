@@ -93,3 +93,16 @@ header {
 .login_btn > img {
 	width: 3rem;
 }
+
+.logout {
+	border: none;
+	outline: none;
+	padding: 1.5rem;
+	border-radius: 1rem;
+	font-weight: bold;
+	font-size: 1.5rem;
+	font-family: var(--font);
+	cursor: pointer;
+	background-color: #4d42ff;
+	color: #fff;
+}

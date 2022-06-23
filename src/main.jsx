@@ -13,13 +13,15 @@ import { authService } from './service/fBase';
 import Join from './component/member/join/join';
 
 function Main({ movie }) {
+	// ** 다크모드
+	const [darkMode, setDarkMode] = useState(true);
+
 	// ** API 데이터 관련
 	const [bestMovie, setBestMovie] = useState([]);
 	const [searchMovie, setSearchMovie] = useState([]);
 	const [searchText, setSearchText] = useState('');
 	const [commingData, setCommingData] = useState([]);
 	const [topData, setTopData] = useState([]);
-	const [darkMode, setDarkMode] = useState(false);
 	const IMG_URL = `https://image.tmdb.org/t/p/w500`;
 
 	// ** 로그인 관련
@@ -56,7 +58,7 @@ function Main({ movie }) {
 	return (
 		<BrowserRouter>
 			<div className={['Main', darkMode ? 'dark' : null].join(' ')}>
-				<Header dark={darkMode} setDark={setDarkMode} isLogin={isLogin} init={init} />
+				<Header dark={darkMode} setDark={setDarkMode} isLogin={isLogin} init={init} userBox={userBox} />
 				<Routes>
 					<Route path="/" element={<Home dark={darkMode} />} />
 					<Route path="/login" element={<Login init={init} />} />

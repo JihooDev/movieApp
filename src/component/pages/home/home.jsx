@@ -1,19 +1,10 @@
 import React from 'react';
-import { useRef, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Button from '../../module/button';
 import About from '../about/about';
 import Styles from './home.module.css';
 
 export default function Home({ dark }) {
-	const [scrollPosition, setScrollPosition] = useState(0);
-	const updateScroll = () => {
-		setScrollPosition(window.scrollY || document.documentElement.scrollTop);
-	};
-	useEffect(() => {
-		window.addEventListener('scroll', updateScroll);
-		console.log(scrollPosition);
-	});
 	const navigation = useNavigate();
 
 	const projectGo = () => {

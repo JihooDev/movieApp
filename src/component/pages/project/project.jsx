@@ -11,12 +11,12 @@ export default function Project({ dark }) {
 						<br />
 						프론트엔드 개발자 <span className={Styles.my_name}>김지후 입니다</span>
 						<br />
-						<p>
+						<span>
 							오늘 뭐 봐? 는 저의 포트폴리오로 제작 하였으며 <br />
 							제작 기간은 2022년 6월 13일 부터 2022년 7월 까지 제작 하였습니다. <br />
 							모든 영화를 소개 해주는 플랫폼이며 <br />
 							인기영화 , 신작 , 추천영화 , 검색 기능을 제공 합니다. <br />
-						</p>
+						</span>
 					</p>
 					<h1 className={Styles.logo}>오늘 뭐 봐?</h1>
 				</div>

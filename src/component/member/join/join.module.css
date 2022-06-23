@@ -8,7 +8,7 @@
 
 .join > form {
 	width: 30%;
-	height: 50%;
+	height: 55%;
 	border: 1px solid #eee;
 	background-color: #fff;
 	border-radius: 1rem;
@@ -22,6 +22,7 @@
 
 .join > form > h1 {
 	font-size: 3.5rem;
+	color: #000;
 }
 
 .join > form .input_box > h3 {

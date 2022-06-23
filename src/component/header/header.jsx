@@ -1,18 +1,11 @@
-import React from 'react';
-import { useEffect } from 'react';
+import React, { useState } from 'react';
+import Modal from '../module/modal';
 import { useNavigate } from 'react-router-dom';
-import { authService } from '../../service/fBase';
-import Button from '../module/button';
 import Styles from './header.module.css';
 
-export default function Header({ init, dark, setDark }) {
+export default function Header({ init, dark, setDark, userBox }) {
+	const [modal, setModal] = useState(false);
 	const navigate = useNavigate();
-
-	const onLogout = () => {
-		authService.signOut();
-		navigate('/');
-		window.location.reload();
-	};
 
 	return (
 		<>
@@ -45,10 +38,18 @@ export default function Header({ init, dark, setDark }) {
 							<img src={process.env.PUBLIC_URL + 'image/user.svg'} alt="로그인" />
 						</button>
 					) : (
-						<Button text={'로그아웃'} onClick={onLogout} />
+						<button
+							onClick={() => {
+								setModal(!modal);
+							}}
+							className={Styles.logout}
+						>
+							{userBox._delegate.displayName}
+						</button>
 					)}
 				</div>
 			</header>
+			{modal ? <Modal modal={modal} setModal={setModal} userBox={userBox} /> : null}
 		</>
 	);
 }
