@@ -5,7 +5,9 @@ import Styles from './login.module.css';
 import { authService, firebaseInstance } from '../../../service/fBase';
 import { useNavigate } from 'react-router-dom';
 import { useRef } from 'react';
-export default function Login() {
+import { useEffect } from 'react';
+
+export default function Login({ init }) {
 	const [email, setEmail] = useState('');
 
 	const navigation = useNavigate();
@@ -24,8 +26,11 @@ export default function Login() {
 		try {
 			if (name === 'Google') {
 				provider = new firebaseInstance.auth.GoogleAuthProvider();
+				console.log(provider);
+				navigation('/');
 			} else if (name === 'Github') {
 				provider = new firebaseInstance.auth.GithubAuthProvider();
+				navigation('/');
 			}
 		} catch (error) {
 			setError('소셜 링크 로그인에 오류가 있습니다.');
@@ -54,6 +59,13 @@ export default function Login() {
 			setError('로그인 정보가 일치하지 않습니다.');
 		}
 	};
+
+	useEffect(() => {
+		if (init) {
+			navigation('/');
+		}
+	});
+
 	return (
 		<div className={Styles.login}>
 			<form onSubmit={onSubmit}>

@@ -9,9 +9,8 @@ import Login from './component/member/login/login';
 import Comming from './component/pages/comming/comming';
 import TopRated from './component/pages/topRated/topRated';
 import Project from './component/pages/project/project';
-import { authService, dbService } from './service/fBase';
+import { authService } from './service/fBase';
 import Join from './component/member/join/join';
-import { get } from 'firebase/database';
 
 function Main({ movie }) {
 	// ** API 데이터 관련
@@ -33,23 +32,13 @@ function Main({ movie }) {
 
 	// ** firebase 데이터 관련
 	const [checkItem, setCheckItem] = useState([]);
-
-	const getCheck = async () => {
-		const newCheck = await dbService.collection('movie').get();
-		newCheck.forEach(document => {
-			const checkItemObj = {
-				...document.data(),
-				id: document.id,
-			};
-			setCheckItem(prev => [checkItemObj, ...prev]);
-		});
-	};
-	console.log(checkItem);
+	const [userBox, setUserBox] = useState(null);
 
 	useEffect(() => {
 		authService.onAuthStateChanged(user => {
 			if (user) {
 				setIsLogin(true);
+				setUserBox(user);
 				setInit(true);
 			} else {
 				setIsLogin(false);
@@ -62,7 +51,6 @@ function Main({ movie }) {
 		movie.comming().then(data => setCommingData(data));
 
 		movie.topRated().then(data => setTopData(data));
-		getCheck();
 	}, []);
 
 	return (
@@ -71,10 +59,12 @@ function Main({ movie }) {
 				<Header dark={darkMode} setDark={setDarkMode} isLogin={isLogin} init={init} />
 				<Routes>
 					<Route path="/" element={<Home dark={darkMode} />} />
-					<Route path="/login" element={<Login />} />
+					<Route path="/login" element={<Login init={init} />} />
 					<Route
 						path="/best"
-						element={<Best data={bestMovie} IMG_URL={IMG_URL} dark={darkMode} checkItem={checkItem} setCheckItem={setCheckItem} />}
+						element={
+							<Best data={bestMovie} IMG_URL={IMG_URL} dark={darkMode} checkItem={checkItem} setCheckItem={setCheckItem} userBox={userBox} />
+						}
 					/>
 					<Route path="/comming" element={<Comming data={commingData} IMG_URL={IMG_URL} dark={darkMode} />} />
 					<Route path="/top_rated" element={<TopRated data={topData} IMG_URL={IMG_URL} dark={darkMode} />} />
@@ -88,6 +78,7 @@ function Main({ movie }) {
 								searchText={searchText}
 								setSearchText={setSearchText}
 								onClick={search}
+								init={init}
 							/>
 						}
 					/>

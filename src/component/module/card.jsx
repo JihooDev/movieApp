@@ -2,27 +2,16 @@ import React, { useState } from 'react';
 import Detail from '../pages/detail/detail';
 import { motion } from 'framer-motion';
 import Styles from './component.module.css';
-import { dbService } from '../../service/fBase';
-import { useEffect } from 'react';
 
-export default function Card({ data, IMG_URL, dark, checkItem, setCheckItem }) {
+export default function Card({ data, IMG_URL, dark }) {
 	const [openDetail, setOpenDetail] = useState(false);
-	const [check, setCheck] = useState(false);
 	const { title, release_date, overview, poster_path, vote_average, name, first_air_date } = data;
 
 	document.body.style.overflow = openDetail ? 'hidden' : 'unset';
 
-	const checkList = async e => {
-		setCheck(!check);
-		e.stopPropagation();
-		await dbService.collection('movie').add({
-			data,
-		});
-	};
-
 	return (
 		<>
-			{openDetail === true ? <Detail close={setOpenDetail} data={data} IMG_URL={IMG_URL} onClick={checkList} check={check} /> : null}
+			{openDetail === true ? <Detail close={setOpenDetail} data={data} IMG_URL={IMG_URL} /> : null}
 			<motion.div
 				className={Styles.card}
 				onClick={() => {
@@ -47,7 +36,6 @@ export default function Card({ data, IMG_URL, dark, checkItem, setCheckItem }) {
 						<span>{release_date ? release_date : first_air_date}</span>
 					</h1>
 					<p>{overview ? overview : '영화 정보 없음'}</p>
-					<img src={process.env.PUBLIC_URL + `image/${check ? 'check' : 'bookmark'}.svg`} alt="담기" onClick={checkList} />
 				</div>
 				<div className={Styles.text}>
 					<h1 style={{ color: `${dark ? '#000' : '#fff'}` }}>{title ? title : name}</h1>

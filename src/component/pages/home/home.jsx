@@ -1,10 +1,29 @@
 import React from 'react';
+import { useRef, useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Button from '../../module/button';
 import About from '../about/about';
-import Contact from '../project/project';
 import Styles from './home.module.css';
 
 export default function Home({ dark }) {
+	const [scrollPosition, setScrollPosition] = useState(0);
+	const updateScroll = () => {
+		setScrollPosition(window.scrollY || document.documentElement.scrollTop);
+	};
+	useEffect(() => {
+		window.addEventListener('scroll', updateScroll);
+		console.log(scrollPosition);
+	});
+	const navigation = useNavigate();
+
+	const projectGo = () => {
+		navigation('/project');
+	};
+
+	const startGo = () => {
+		document.documentElement.scrollTop = 1000;
+	};
+
 	return (
 		<>
 			<div className={Styles.home}>
@@ -23,8 +42,8 @@ export default function Home({ dark }) {
 							<span>오늘 뭐 봐?</span> 가 도와 드립니다!
 						</p>
 						<div className={Styles.btn_box}>
-							<Button text={'시작하기'} type={'success'} />
-							<Button text={'프로젝트 소개'} type={'default'} />
+							<Button text={'시작하기'} type={'success'} onClick={startGo} />
+							<Button text={'프로젝트 소개'} type={'default'} onClick={projectGo} />
 						</div>
 					</div>
 					<div className={Styles.right}>

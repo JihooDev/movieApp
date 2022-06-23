@@ -1,14 +1,22 @@
 import React from 'react';
 import { useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Card from '../../module/card';
 import Styles from './search.module.css';
 
-export default function Search({ IMG_URL, data, searchText, setSearchText, onClick, dark }) {
+export default function Search({ IMG_URL, data, searchText, setSearchText, onClick, dark, init }) {
 	const searchRef = useRef('');
+	const navigation = useNavigate();
+
 	const handleClick = e => {
 		e.preventDefault();
-		if (searchRef.current.value.length > 0) {
-			onClick();
+		if (init) {
+			if (searchRef.current.value.length > 0) {
+				onClick();
+			}
+		} else {
+			alert('회원 전용 기능입니다. 로그인 해주세요');
+			navigation('/login');
 		}
 	};
 
