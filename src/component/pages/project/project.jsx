@@ -1,10 +1,15 @@
 import React from 'react';
 import Styles from './project.module.css';
+import { motion } from 'framer-motion';
 
 export default function Project({ dark }) {
 	return (
 		<div className={Styles.project}>
-			<div className={['container', `${Styles.container}`].join(' ')}>
+			<motion.div
+				className={['container', `${Styles.container}`].join(' ')}
+				initial={{ scale: 100, opacity: 0 }}
+				animate={{ scale: 1, opacity: 1, transition: { duration: 2, ease: 'anticipate', easings: 'anticipate' } }}
+			>
 				<div className={Styles.project_about}>
 					<p style={{ color: `${dark ? '#fff' : '#000'}` }} className={Styles.main}>
 						안녕하세요!
@@ -69,7 +74,7 @@ export default function Project({ dark }) {
 						</a>
 					</div>
 				</footer>
-			</div>
+			</motion.div>
 		</div>
 	);
 }

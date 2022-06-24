@@ -4,8 +4,8 @@ import Button from '../../module/button';
 import Styles from './login.module.css';
 import { authService, firebaseInstance } from '../../../service/fBase';
 import { useNavigate } from 'react-router-dom';
-import { useRef } from 'react';
 import { useEffect } from 'react';
+import { motion } from 'framer-motion';
 
 export default function Login({ init }) {
 	const [email, setEmail] = useState('');
@@ -68,7 +68,11 @@ export default function Login({ init }) {
 
 	return (
 		<div className={Styles.login}>
-			<form onSubmit={onSubmit}>
+			<motion.form
+				onSubmit={onSubmit}
+				initial={{ scale: 100, opacity: 0 }}
+				animate={{ scale: 1, opacity: 1, transition: { duration: 1, ease: 'anticipate', easings: 'anticipate' } }}
+			>
 				<h1>로그인</h1>
 				<div className={Styles.input_box}>
 					<input type="text" className={Styles.input} name="email" placeholder="E-mail" required value={email} onChange={onChange} />
@@ -94,7 +98,7 @@ export default function Login({ init }) {
 					/>
 					<Button text={'로그인'} type={'success'} />
 				</div>
-			</form>
+			</motion.form>
 		</div>
 	);
 }

@@ -71,7 +71,7 @@
 }
 
 .title h1 {
-	font-size: 4rem;
+	font-size: 2rem;
 	font-family: var(--font-style);
 }
 
@@ -121,4 +121,12 @@
 
 .link img {
 	width: 10rem;
+}
+
+.overview {
+	height: 18rem;
+	border-radius: 1rem;
+	padding: 1rem;
+	font-weight: bold;
+	overflow: scroll;
 }

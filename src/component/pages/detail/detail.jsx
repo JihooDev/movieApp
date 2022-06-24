@@ -20,6 +20,7 @@ export default function Detail({ close, data, IMG_URL }) {
 			});
 	};
 	videos(VIDEO);
+
 	const tvData = url => {
 		fetch(url)
 			.then(res => res.json())
@@ -29,11 +30,19 @@ export default function Detail({ close, data, IMG_URL }) {
 	};
 	tvData(CREDIT);
 
+	const closeDetail = e => {
+		if (e.target.id === 'back_detail') {
+			close(false);
+		}
+	};
+
 	return (
 		<motion.div
 			className={Styles.detail}
 			initial={{ opacity: 0 }}
+			id="back_detail"
 			animate={{ opacity: 1, transition: { duration: 0.4 } }}
+			onClick={closeDetail}
 			style={{ backgroundImage: `url(${process.env.PUBLIC_URL}image/modal_back.jpg)` }}
 		>
 			<button
@@ -48,7 +57,7 @@ export default function Detail({ close, data, IMG_URL }) {
 				<div className={Styles.view_top}>
 					<div className={Styles.view}>
 						<div className={Styles.title}>
-							<h1>{title ? title : name}</h1>
+							<h1>{title}</h1>
 						</div>
 						<a href={LINK} target="_blank" rel="noreferrer" className={Styles.link}>
 							<img src={process.env.PUBLIC_URL + 'image/youtube.png'} alt="예고편" />
@@ -57,10 +66,10 @@ export default function Detail({ close, data, IMG_URL }) {
 						<p id={Styles.aver}>
 							<span>{vote_average}</span>
 						</p>
-						<p>{overview}</p>
+						<p className={Styles.overview}>{overview ? overview : '영화의 자세한 정보가 없습니다.'}</p>
 					</div>
 					<div className={Styles.photo}>
-						<img src={IMG_URL + backdrop_path} alt="" />
+						<img src={IMG_URL + backdrop_path} alt="poster" />
 					</div>
 				</div>
 				<h1 className={Styles.actor}>{actor ? '주요인물' : '인물 정보 없음'}</h1>

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Modal from '../module/modal';
 import { useNavigate } from 'react-router-dom';
 import Styles from './header.module.css';
+import { motion } from 'framer-motion';
 
 export default function Header({ init, dark, setDark, userBox }) {
 	const [modal, setModal] = useState(false);
@@ -9,7 +10,11 @@ export default function Header({ init, dark, setDark, userBox }) {
 
 	return (
 		<>
-			<header>
+			<motion.header
+				style={{ backgroundColor: dark ? '#000' : '#fff' }}
+				initial={{ opacity: 0, transform: 'translateY(-100%)' }}
+				animate={{ opacity: 1, transform: 'translateY(0%)', transition: { duration: 1, delay: 1 } }}
+			>
 				<div className={Styles.header_con}>
 					<div className={Styles.left}>
 						<h1 onClick={() => navigate('/')}>오늘 뭐 봐?</h1>
@@ -48,7 +53,7 @@ export default function Header({ init, dark, setDark, userBox }) {
 						</button>
 					)}
 				</div>
-			</header>
+			</motion.header>
 			{modal ? <Modal modal={modal} setModal={setModal} userBox={userBox} /> : null}
 		</>
 	);
