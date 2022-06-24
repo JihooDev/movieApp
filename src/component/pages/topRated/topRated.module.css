@@ -8,3 +8,11 @@
 	font-size: 3rem;
 	padding: 1rem 0;
 }
+
+@media screen and (max-width: 1024px) {
+	.data {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+}

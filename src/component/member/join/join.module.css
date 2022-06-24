@@ -60,3 +60,19 @@ form > .input_box {
 	align-items: center;
 	margin-top: 1rem;
 }
+
+@media screen and (max-width: 1024px) {
+	.join > form {
+		width: 90%;
+		height: 85%;
+		border: 1px solid #eee;
+		background-color: #fff;
+		border-radius: 1rem;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		padding: 3rem;
+		box-shadow: 0 5px 20px 0 rgba(28, 29, 33, 0.09);
+	}
+}

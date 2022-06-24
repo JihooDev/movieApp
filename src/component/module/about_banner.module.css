@@ -16,26 +16,6 @@
 	overflow: hidden;
 }
 
-.pageOne {
-	background-color: #5f27cd;
-}
-
-.pageTwo {
-	background-color: #3d3d3d;
-}
-
-.pageThree {
-	background-color: #ff4d4d;
-}
-
-.pageFour {
-	background-color: #192a56;
-}
-
-.pageFive {
-	background-color: #c23616;
-}
-
 .image {
 	width: 60%;
 }
@@ -60,4 +40,38 @@
 
 .text > p {
 	font-size: 2.5rem;
+}
+
+@media screen and (max-width: 1024px) {
+	.container {
+		width: 100%;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		overflow: hidden;
+	}
+
+	.image {
+		width: 100%;
+	}
+
+	.text {
+		width: 100%;
+		height: 60%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.text > h1 {
+		font-size: 8rem;
+		margin-bottom: 3rem;
+	}
+
+	.text > p {
+		font-size: 2rem;
+	}
 }

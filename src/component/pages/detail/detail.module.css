@@ -130,3 +130,64 @@
 	font-weight: bold;
 	overflow: scroll;
 }
+
+@media screen and (max-width: 1024px) {
+	.container {
+		position: relative;
+		width: 95%;
+		height: 75%;
+		border-radius: 1rem;
+	}
+
+	.view_top {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		padding: 3rem;
+		height: 60%;
+	}
+
+	.title {
+		width: 30rem;
+	}
+
+	.title h1 {
+		font-size: 1.5rem;
+		font-family: var(--font-style);
+	}
+
+	.overview {
+		width: 30rem;
+		height: 10rem;
+		border-radius: 1rem;
+		font-weight: bold;
+		overflow: scroll;
+	}
+
+	.photo {
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.photo > img {
+		width: 100%;
+	}
+
+	.link > img {
+		width: 3rem;
+	}
+
+	.actor {
+		display: none;
+	}
+
+	.actor_list {
+		margin-top: 7rem;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		overflow-x: scroll;
+	}
+}

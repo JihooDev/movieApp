@@ -1,10 +1,14 @@
 .data {
 	display: flex;
 	flex-wrap: wrap;
+	align-items: center;
 	justify-content: space-between;
 }
 
-.container > h1 {
-	font-size: 3rem;
-	padding: 1rem 0;
+@media screen and (max-width: 1024px) {
+	.data {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
 }

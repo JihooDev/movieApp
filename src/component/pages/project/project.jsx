@@ -27,30 +27,30 @@ export default function Project({ dark }) {
 				</div>
 				<div className={Styles.lang} style={{ color: `${dark ? '#fff' : '#000'}` }}>
 					<div className={Styles.lang_box1}>
-						<p>
+						<p className={Styles.lang_text}>
 							개발 언어 <br />
 							<img className={Styles.logo_img} src={process.env.PUBLIC_URL + 'image/html.png'} alt="로고 이미지" />
 							<img className={Styles.logo_img} src={process.env.PUBLIC_URL + 'image/css.png'} alt="로고 이미지" />
 							<img className={Styles.logo_img} src={process.env.PUBLIC_URL + 'image/js.png'} alt="로고 이미지" />
 						</p>
-						<p>
+						<p className={Styles.lang_text}>
 							프레임워크 <br />
 							<img className={Styles.logo_img} src={process.env.PUBLIC_URL + 'image/react.png'} alt="로고 이미지" />
 							<img className={Styles.logo_img} src={process.env.PUBLIC_URL + 'image/postcss.png'} alt="로고 이미지" />
 						</p>
 					</div>
 					<div className={Styles.lang_box2}>
-						<p>
+						<p className={Styles.lang_text}>
 							라이브러리
 							<br />
 							<img className={Styles.logo_img} src={process.env.PUBLIC_URL + 'image/framer.png'} alt="로고 이미지" />
 						</p>
-						<p>
+						<p className={Styles.lang_text}>
 							패키지 매니저
 							<br />
 							<img className={Styles.logo_img} src={process.env.PUBLIC_URL + 'image/yarn.svg'} alt="로고 이미지" />
 						</p>
-						<p>
+						<p className={Styles.lang_text}>
 							사용 API
 							<br />
 							<img className={Styles.logo_img} src={process.env.PUBLIC_URL + 'image/tmdb.png'} alt="로고 이미지" />

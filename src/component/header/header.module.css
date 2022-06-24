@@ -12,17 +12,18 @@
 }
 
 header {
-	height: 10vh;
+	height: 10rem;
 	width: 100%;
 	z-index: 999;
 	position: sticky;
 	top: 0%;
 	box-shadow: 0 7px 9px -7px rgba(0, 0, 0, 0.5);
 	transition: all 0.3s ease-in-out;
+	max-width: 1920px;
 }
 
 .header_con {
-	width: 130rem;
+	width: 70%;
 	height: 100%;
 	margin: 0 auto;
 	display: flex;
@@ -35,6 +36,13 @@ header {
 	font-family: 'GmarketSansBold';
 	color: var(--main-color);
 	cursor: pointer;
+}
+
+.menu_box {
+	width: 80%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 }
 
 .menu {
@@ -56,7 +64,7 @@ header {
 	border-radius: 1rem;
 }
 
-.search_bar > button {
+.search_bar {
 	outline: none;
 	border: none;
 	background: transparent;
@@ -66,8 +74,14 @@ header {
 	border-radius: 1rem;
 }
 
-.search_bar > button > img {
+.search_bar > img {
 	width: 3rem;
+}
+
+.btn_box {
+	display: flex;
+	justify-content: space-between;
+	width: 20%;
 }
 
 .dark_btn {
@@ -109,4 +123,98 @@ header {
 	cursor: pointer;
 	background-color: #4d42ff;
 	color: #fff;
+}
+
+.mobile_menu {
+	display: none;
+}
+
+.open {
+	display: none;
+}
+
+.closed {
+	display: none;
+}
+
+.mobile_btn {
+	display: none;
+}
+
+@media screen and (max-width: 1024px) {
+	header {
+		width: 100%;
+	}
+
+	.menu_box {
+		display: none;
+	}
+
+	.left > h1 {
+		font-size: 2rem;
+	}
+
+	.user_name {
+		color: #fff;
+		font-weight: bold;
+	}
+
+	.mobile_btn {
+		display: block;
+		border: none;
+		outline: none;
+		background: transparent;
+	}
+
+	.mobile_btn > .ham {
+		width: 3rem;
+	}
+
+	.open {
+		background-color: #000;
+		display: block;
+	}
+
+	.closed {
+		display: none;
+	}
+
+	.mobile_btn_box {
+		width: 100%;
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+		border-bottom: 1px solid #eee;
+		padding: 3rem;
+	}
+
+	.mobile_ul {
+		width: 100%;
+	}
+
+	.mobile_ul > li {
+		width: 100%;
+		height: 15%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		font-size: 2rem;
+		padding: 3rem;
+		border-bottom: 1px solid #eee;
+		font-weight: bold;
+	}
+
+	.mobile_button {
+		width: 5rem;
+		height: 5rem;
+		border: 1px solid #fff;
+		border-radius: 1rem;
+		background-color: transparent;
+	}
+
+	.mobile_button > img {
+		padding: 1rem;
+		width: 5rem;
+		height: 5rem;
+	}
 }

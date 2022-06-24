@@ -75,3 +75,30 @@ form > .input_box {
 	align-items: center;
 	margin-top: 1rem;
 }
+
+@media screen and (max-width: 1024px) {
+	.login {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.login > form {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 90%;
+		height: 90%;
+		box-shadow: 0 5px 20px 0 rgba(28, 29, 33, 0.09);
+	}
+
+	.social {
+		width: 6rem;
+		padding: 1rem;
+		border: 1px solid #eee;
+		cursor: pointer;
+		height: 6rem;
+		margin: 0 1rem;
+		border-radius: 1rem;
+	}
+}

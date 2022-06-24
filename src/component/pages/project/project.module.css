@@ -4,8 +4,10 @@
 }
 
 .project {
+	width: 100%;
 	padding-top: 6rem;
 	font-size: 3rem;
+	overflow: hidden;
 }
 
 .project_about {
@@ -45,17 +47,15 @@
 
 .lang_box2 {
 	display: flex;
-	justify-content: center;
+	justify-content: space-around;
 	align-items: center;
 }
 
 .lang_box2 > p {
-	margin: 0 8rem;
 	font-size: 3rem;
 	border: 3px solid #5f27cd;
 	border-radius: 3rem;
 	padding: 2rem;
-	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
@@ -114,4 +114,126 @@
 
 .github_logo > img {
 	width: 3rem;
+}
+
+@media screen and (max-width: 1024px) {
+	.project {
+		width: 100%;
+		padding-top: 3rem;
+		font-size: 2rem;
+		overflow: hidden;
+	}
+
+	.project_about {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.container {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.main {
+		margin-top: 3rem;
+		font-size: 1.5rem;
+		font-weight: bold;
+		line-height: 3rem;
+	}
+
+	.my_name {
+		font-size: 2rem;
+		color: #4d42ff;
+	}
+
+	.logo {
+		font-size: 3rem;
+		padding: 1rem;
+		border-radius: 0.5rem;
+		align-self: center;
+		margin-top: 3rem;
+	}
+
+	.lang {
+		width: 30rem;
+	}
+
+	.logo_img {
+		width: 5rem;
+	}
+
+	.lang_box1 {
+		width: 30rem;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.lang_box1 > .lang_text {
+		width: 30rem;
+		font-size: 1.5rem;
+		margin-bottom: 1rem;
+		text-align: center;
+	}
+
+	.lang_box2 {
+		width: 30rem;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.lang_box2 > p {
+		width: 30rem;
+		font-size: 1.3rem;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin: 1rem 0.5rem;
+	}
+
+	.lang_box1 > p {
+		margin: 0 2rem;
+		font-size: 3rem;
+		border: 3px solid #5f27cd;
+		border-radius: 3rem;
+		padding: 2rem;
+	}
+
+	.link_box {
+		margin: 5rem 0;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.url {
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+	}
+
+	.url_text {
+		font-size: 1rem;
+		text-decoration: none;
+		margin-right: 4rem;
+		text-align: center;
+	}
+
+	.github_logo {
+		padding: 1rem;
+		background-color: #fff;
+		border-radius: 50%;
+	}
+
+	.github_logo > img {
+		width: 2rem;
+	}
 }

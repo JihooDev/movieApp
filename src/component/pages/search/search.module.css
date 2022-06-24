@@ -2,6 +2,10 @@
 	--main-color: #4d42ff;
 }
 
+.search {
+	overflow: hidden;
+}
+
 .back_img {
 	width: 100%;
 	position: relative;
@@ -76,6 +80,7 @@ form > button > img {
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
 	padding: 10rem 0;
+	flex-wrap: wrap;
 }
 
 .container > h1 {
@@ -107,11 +112,43 @@ form > button > img {
 	height: 40rem;
 }
 
-@keyframes spin {
-	0% {
-		transform: rotate(0deg);
+@media screen and (max-width: 1024px) {
+	.back_img {
+		width: 100vw;
+		position: relative;
 	}
-	100% {
-		transform: rotate(360deg);
+
+	.back_img > img {
+		width: 100%;
+		height: 30rem;
+		object-fit: cover;
+	}
+
+	.back_img > h1 {
+		position: absolute;
+		font-size: 3rem;
+		color: #fff;
+		width: 100%;
+		text-align: center;
+	}
+
+	.data {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: center;
+		padding: 3rem 0;
+	}
+
+	.back_img > .search_bar {
+		position: initial;
+		width: 100%;
+		z-index: 998;
+		font-size: 2rem;
+		border: none;
+		outline: none;
+		background-color: #fff;
+		box-shadow: 0 5px 20px 0 rgb(147, 147, 147);
+		border-radius: 2rem;
 	}
 }
