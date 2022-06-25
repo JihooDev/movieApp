@@ -5,7 +5,7 @@ import Styles from './header.module.css';
 import { motion } from 'framer-motion';
 import './header.css';
 
-export default function Header({ init, dark, setDark, userBox }) {
+export default React.memo(function Header({ init, dark, setDark, userBox }) {
 	const [modal, setModal] = useState(false);
 	const navigate = useNavigate();
 	const [menuOpen, setMenuOpen] = useState(false);
@@ -51,7 +51,7 @@ export default function Header({ init, dark, setDark, userBox }) {
 									}}
 									className={Styles.logout}
 								>
-									{userBox._delegate.displayName}
+									<p>{userBox._delegate.displayName}</p>
 								</button>
 							)}
 						</div>
@@ -101,7 +101,7 @@ export default function Header({ init, dark, setDark, userBox }) {
 								onClick={() => {
 									setModal(!modal);
 								}}
-								className={Styles.mobile_button}
+								className={Styles.mobile_button_user}
 							>
 								<p className={Styles.user_name}>{userBox._delegate.displayName}</p>
 							</button>
@@ -146,4 +146,4 @@ export default function Header({ init, dark, setDark, userBox }) {
 			{modal ? <Modal modal={modal} setModal={setModal} userBox={userBox} /> : null}
 		</>
 	);
-}
+});

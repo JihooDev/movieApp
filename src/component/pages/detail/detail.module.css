@@ -173,6 +173,7 @@
 
 	.photo > img {
 		width: 100%;
+		border-radius: 2rem;
 	}
 
 	.link > img {
@@ -184,10 +185,28 @@
 	}
 
 	.actor_list {
-		margin-top: 7rem;
+		margin-top: 17rem;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
 		overflow-x: scroll;
+	}
+
+	.close_btn {
+		position: absolute;
+		top: 1%;
+		right: 1%;
+		border: none;
+		outline: none;
+		padding: 1rem;
+		background: transparent;
+	}
+
+	.close_btn img {
+		width: 3rem;
+		outline: 1px solid #fff;
+		border-radius: 1rem;
+		transition: all 0.3s ease-in;
+		cursor: pointer;
 	}
 }

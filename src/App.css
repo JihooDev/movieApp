@@ -21,6 +21,8 @@
 .Main {
 	font-family: 'Pretendard-Regular';
 	transition: all 0.3s ease-in-out;
+	width: 100vw;
+	overflow: hidden;
 }
 
 .dark {
@@ -72,4 +74,12 @@
 }
 .btn_fail:hover {
 	background-color: rgb(199, 3, 3);
+}
+
+@media screen and (max-width: 1024px) {
+	.btn {
+		width: 14rem;
+		height: 7rem;
+		font-size: 2rem;
+	}
 }

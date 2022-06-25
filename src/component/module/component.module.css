@@ -192,6 +192,28 @@
 	}
 
 	.modal_container > h1 {
+		font-size: 1.4rem;
+	}
+
+	.modal_container > h1 > span {
+		font-size: 1.5rem;
+	}
+
+	.modal_container > p {
+		color: #000;
+		text-align: center;
+		height: 20%;
 		font-size: 2rem;
+	}
+
+	.actor_box img {
+		width: 5rem;
+		height: 5rem;
+		border-radius: 1rem;
+	}
+
+	.actor_box h1 {
+		font-size: 1rem;
+		text-align: center;
 	}
 }

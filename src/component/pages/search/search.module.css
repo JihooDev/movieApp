@@ -126,7 +126,7 @@ form > button > img {
 
 	.back_img > h1 {
 		position: absolute;
-		font-size: 3rem;
+		font-size: 2rem;
 		color: #fff;
 		width: 100%;
 		text-align: center;
@@ -143,12 +143,17 @@ form > button > img {
 	.back_img > .search_bar {
 		position: initial;
 		width: 100%;
-		z-index: 998;
-		font-size: 2rem;
-		border: none;
-		outline: none;
-		background-color: #fff;
+		height: 5rem;
 		box-shadow: 0 5px 20px 0 rgb(147, 147, 147);
 		border-radius: 2rem;
+	}
+
+	.container .result_text {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+		font-size: 2rem;
+		height: 40rem;
 	}
 }

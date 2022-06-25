@@ -78,6 +78,8 @@ form > .input_box {
 
 @media screen and (max-width: 1024px) {
 	.login {
+		width: 100vw;
+		overflow: hidden;
 		display: flex;
 		justify-content: center;
 		align-items: center;
