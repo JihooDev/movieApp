@@ -19,7 +19,6 @@ header {
 	top: 0%;
 	box-shadow: 0 7px 9px -7px rgba(0, 0, 0, 0.5);
 	transition: all 0.3s ease-in-out;
-	max-width: 1920px;
 }
 
 .header_con {
