@@ -46,15 +46,9 @@ export default function Join() {
 				initial={{ scale: 100, opacity: 0 }}
 				animate={{ scale: 1, opacity: 1, transition: { duration: 1, ease: 'anticipate', easings: 'anticipate' } }}
 			>
-				<h1>회원가입</h1>
+				<h1>회원 가입</h1>
 				<div className={Styles.input_box}>
-					<input type="text" className={Styles.input} name="user_name" ref={user_name} placeholder="your name" required />
-					<input type="text" className={Styles.input} name="email" placeholder="E-mail" required value={email} onChange={onChange} />
-					<input type="password" className={Styles.input} name="password" placeholder="Password" required value={password} onChange={onChange} />
-					<h3 style={{ color: error ? 'red' : 'blue' }}>{error ? error : '계정 생성 후 바로 로그인 됩니다'}</h3>
-				</div>
-				<div className={Styles.submit}>
-					<Button text={'회원가입'} type={'success'} />
+					<h3>ID</h3>
 				</div>
 			</motion.form>
 		</div>
